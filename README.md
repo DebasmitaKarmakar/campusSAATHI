@@ -75,12 +75,43 @@ The platform combines operational utilities with community features so students,
 
 ## Role-Based Access
 
-The app supports four primary roles:
+campusSAATHI provides role-specific dashboards so users see the campus tools relevant to their responsibilities.
 
-- Student: access campus services, notices, grievances, opportunities, attendance, resources, and profile management
-- Faculty: publish notices, manage attendance, review campus items, and moderate academic and institutional workflows
-- Canteen Staff: operate the canteen workflow, handle orders, and manage feedback
-- Admin: oversee user access, approve content, monitor campus operations, and manage governance tasks
+### Student
+Students use campusSAATHI to stay informed and access day-to-day campus services. They can:
+- Read campus notices and track their attendance
+- Place canteen orders, follow order status, and submit feedback
+- Report lost or found items and raise or upvote grievances
+- Browse and submit opportunities, subject to review where required
+- Share or request academic resources and peer support
+- Browse the campus directory, request or offer MicroHelp, and manage their profile
+
+### Faculty
+Faculty members support teaching and campus oversight. They can:
+- Publish notices for the campus community
+- Manage class attendance and view relevant student attendance information
+- Review and approve or reject verification requests and flagged content
+- Review student-submitted opportunities
+- Moderate MicroHelp requests and oversee relevant directory, lost-and-found, and grievance workflows
+- Manage their faculty profile
+
+### Canteen Staff
+Canteen staff manage meal-service operations. They can:
+- View incoming student orders and update their status
+- Open or close ordering for breakfast, lunch, and dinner
+- Add, remove, and update the availability of menu items
+- Review order and general feedback reports
+- Use campus lost-and-found and grievance views relevant to their role
+
+### Administrator
+Administrators oversee platform access and campus-wide operations. They can:
+- Manage the authorized user list and account status
+- Publish and oversee notices
+- Configure attendance timetables and review schedule changes
+- Review and manage grievances, opportunities, academic resources, and MicroHelp
+- Monitor canteen orders and feedback
+- Oversee lost-and-found records and campus directory information
+- Access administrative governance and audit information
 
 ## Architecture and Design
 
