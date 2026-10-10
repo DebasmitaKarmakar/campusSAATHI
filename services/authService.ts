@@ -230,10 +230,8 @@ export interface TOTPSendResult {
 }
 
 /**
- * Generates a browser-only demo OTP challenge for the static, local-first app.
- * The app has no backend or email service, so the code is intentionally local and
- * displayed to the user in-browser to keep the experience functional in demo and
- * deployable static builds.
+ * Generates a browser-only demo OTP challenge.
+ * This code is not an authenticated identity and must never authorize database access.
  */
 const DEMO_TOTP_CODE = '098765';
 
@@ -276,8 +274,7 @@ export const clearTOTPSession = (): void => {
 };
 
 // ============================================================
-// GOOGLE OAUTH SIMULATION
-// In production this uses the Google Identity Services SDK.
+// DEMO SIGN-IN SIMULATION
 // ============================================================
 
 export interface GoogleAuthResult {

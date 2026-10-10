@@ -118,16 +118,26 @@ Administrators oversee platform access and campus-wide operations. They can:
 College Saathi is intentionally lightweight:
 
 - Frontend: React + TypeScript + Vite
-- Data storage: browser localStorage and sessionStorage
+- Current application data storage: browser `localStorage` and `sessionStorage`
 - Persistence model: a local "database service" abstraction ensures state is managed consistently across the app
 - Cross-tab sync: a custom DOM event keeps UI state in sync across tabs
 - Deployment model: static build output that can be served from GitHub Pages, Netlify, Vercel, or any simple static hosting provider
 
-This design keeps setup cost low and makes it easy to run in demo or pilot environments without server-side infrastructure.
+Supabase is not connected to the frontend yet. The SQL migration is a schema
+foundation only. The current demo sign-in accepts a whitelisted email and the
+fixed OTP (`098765`) in both development and deployed builds; no email is sent.
+This is not verified authentication and does not authorize Supabase access.
+Profiles and all feature data still use the current local-storage
+implementation and are not shared across browsers or devices. Do not use this
+demo flow to protect real or sensitive campus information. See the database
+requirements document for the requirements to securely integrate Firebase
+Authentication and Supabase.
 
 For a feature-by-feature specification of the shared backend database tables,
 fields, types, relationships, and file-storage requirements, see
 [DATABASE_REQUIREMENTS.md](./DATABASE_REQUIREMENTS.md).
+The initial Supabase SQL migration is in
+[supabase/migrations/](./supabase/migrations/).
 
 ## How It Works
 

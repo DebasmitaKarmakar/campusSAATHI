@@ -10,6 +10,63 @@ The current application is a static, local-first React app. Its records are
 stored per browser/device and are not shared between users. A backend database
 is needed for shared accounts, campus content, workflows, and reporting.
 
+## 1.1 Current Supabase integration status
+
+The initial PostgreSQL schema is maintained as a Supabase migration at
+[`supabase/migrations/20261010100000_initial_schema.sql`](./supabase/migrations/20261010100000_initial_schema.sql).
+It creates the core tables, constraints, indexes, an Auth-to-profile trigger,
+and enables Row Level Security (RLS) on every table.
+
+The migration is a schema foundation only. The frontend does not initialize a
+Supabase client or read/write Supabase tables. The fixed test OTP `098765` and
+simulated sign-in are available for whitelisted emails in both development and
+deployed builds. No email is sent. This demo flow does not establish a verified
+identity and must not be treated as authorization for Supabase. Application
+data continues to be stored in browser `localStorage`/`sessionStorage`; it is
+not shared across users, browsers, or devices. Do not use the demo flow to
+protect real or sensitive campus data.
+
+RLS is enabled and the migration intentionally creates no client access
+policies. Do not add anonymous/permissive policies. Before connecting feature
+data, implement real Supabase Auth identity mapping, trusted role assignment,
+and least-privilege RLS policies; then migrate and verify each module. Supabase
+Storage buckets and their policies also need to be configured for file uploads.
+
+### Current storage by feature
+
+| Area | Current storage |
+|---|---|
+| Sign-in and demo OTP | Simulated client-side authentication; OTP challenge uses browser session storage. The fixed code is enabled in development and deployed builds, is not production identity verification, and is not valid for Supabase RLS. |
+| Whitelist and device trust | Browser `localStorage`. |
+| Profiles and theme | Browser `localStorage` and current app session. |
+| Notices, grievances, opportunities, resources, attendance, canteen, Lost & Found, MicroHelp, directory contacts, verification requests, notifications, and admin logs | Browser `localStorage` through the local database service and feature services. |
+| Static campus organizations and demo records | Seeded by frontend code into browser storage or defined as local demo data. |
+| Supabase | Schema migration only; no frontend data operations. |
+
+### Supabase values needed for a future frontend connection
+
+When authenticated integration is ready, the frontend configuration will need:
+
+1. **Project URL** in `VITE_SUPABASE_URL` — Supabase Dashboard → Project
+   Settings → API (sometimes shown as the project URL).
+2. **Publishable key** in `VITE_SUPABASE_PUBLISHABLE_KEY` — Supabase Dashboard
+   → Project Settings → API. The legacy `anon` key can be used if the project
+   only provides that format. These client keys are intended for browser use
+   only when RLS is correctly configured.
+3. **Authentication provider configuration** — decide and configure the real
+   provider in Supabase Auth before replacing the development-only sign-in.
+
+Do **not** put the `service_role`/secret key, database password, or any
+privileged credential in frontend code, a `VITE_*` variable, or a committed
+`.env` file. The database password is only needed for trusted administrative
+connections such as a protected migration/CLI workflow; it is not a browser
+credential. Blank placeholders for the two frontend values are in the ignored
+`.env.local` file; the frontend remains intentionally disconnected.
+
+Do not claim shared or cross-device persistence until authenticated database
+integration, access policies, and end-to-end behavior have been implemented and
+tested.
+
 ## 2. Recommended approach
 
 Use a relational database such as PostgreSQL for the records below, plus
