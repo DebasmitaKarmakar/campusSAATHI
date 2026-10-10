@@ -1,6 +1,6 @@
 # College Saathi
 
-College Saathi is a browser-based campus management and student engagement platform built for National Forensic Sciences University (NFSU), Gandhinagar. It brings together the services students and staff need most in a single digital workspace: notifications, grievance handling, academic resources, attendance, canteen operations, lost-and-found items, and career opportunities.
+College Saathi is a browser-based campus management and student engagement platform built for National Forensic Sciences University (NFSU), Gandhinagar. It brings together the services students and staff need the most in a single digital workspace: notifications, grievance handling, academic resources, attendance, canteen operations, lost-and-found items, and career opportunities.
 
 Designed with a lightweight, low-infrastructure approach, the app runs entirely in the browser and stores data locally on the user's device. This makes it simple to deploy, easy to demo, and ideal for campus kiosks, lab terminals, or internal pilot deployments.
 
