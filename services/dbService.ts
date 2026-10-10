@@ -57,7 +57,7 @@ export const dbService = {
     const currentVersion = localStorage.getItem(`${DB_PREFIX}version`);
 
     if (currentVersion !== DB_VERSION) {
-      console.log('CampusWhispers DB: Initializing v' + DB_VERSION);
+      console.log('College Saathi DB: Initializing v' + DB_VERSION);
 
       const menu = dbService.getTable<MenuItem>('canteen_menu');
       if (menu.length === 0) {

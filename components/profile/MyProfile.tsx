@@ -241,7 +241,7 @@ export const MyProfile: React.FC<MyProfileProps> = ({ user, onProfileUpdate }) =
       <div className="bg-nfsu-maroon p-10 rounded-[3rem] text-white shadow-2xl border-b-8 border-black/20">
         <h4 className="text-xl font-black uppercase italic tracking-tighter mb-4">Identity Verification & Accountability</h4>
         <p className="text-white/60 text-xs font-bold leading-relaxed uppercase tracking-tight">
-          CampusWhispers utilizes high-integrity identity binding. Your profile summary reflects your verified contributions to the NFSU institutional community. 
+          College Saathi utilizes high-integrity identity binding. Your profile summary reflects your verified contributions to the NFSU institutional community. 
           Misrepresentation or misuse of institutional modules is tracked for audit integrity.
         </p>
       </div>

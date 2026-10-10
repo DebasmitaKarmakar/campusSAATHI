@@ -101,7 +101,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
     setDevelopmentOTP(result.developmentCode ?? null);
     if (result.developmentCode) {
-      console.info('[Campus Whispers] Development OTP:', result.developmentCode);
+      console.info('[College Saathi] Development OTP:', result.developmentCode);
     }
     setTotpDigits(['', '', '', '', '', '']);
     setTotpAttempts(0);
@@ -231,7 +231,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                 <img src={Images.nfsuLogo} alt="NFSU" className="w-full h-full object-contain" />
               </div>
               <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase italic leading-none mb-3">
-                Campus<br /><span className="text-nfsu-gold">Whispers</span>
+                College<br /><span className="text-nfsu-gold">Saathi</span>
               </h2>
               <div className="w-10 h-1 bg-nfsu-gold mx-auto mb-5"></div>
               <p className="text-nfsu-gold/50 text-[9px] font-black uppercase tracking-[0.4em] leading-relaxed mb-8">

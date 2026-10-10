@@ -37,7 +37,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
             <div>
               <h1 className="text-base md:text-2xl font-black tracking-tight text-white leading-none uppercase flex items-baseline">
-                CAMPUS<span className="text-nfsu-gold">WHISPERS</span>
+                COLLEGE<span className="text-nfsu-gold"> SAATHI</span>
                 <span className="ml-2 w-1.5 h-1.5 bg-nfsu-gold rounded-full animate-pulse"></span>
               </h1>
               <p className="text-[9px] md:text-[10px] text-nfsu-gold/80 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] mt-0.5 md:mt-1.5">National Forensic Sciences University, Tripura</p>
@@ -72,7 +72,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer style={{backgroundColor: isDark ? undefined : '#fffde7'}} className="py-10 px-8 border-t-4 border-nfsu-gold dark:bg-slate-800 dark:border-nfsu-gold/30">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] font-black text-nfsu-navy uppercase tracking-[0.3em]">
-            &copy; {new Date().getFullYear()} CampusWhispers • Institutional Authority • NFSU
+            &copy; {new Date().getFullYear()} College Saathi • Institutional Authority • NFSU
           </div>
           <div className="flex gap-6">
             <span className="w-2 h-2 rounded-full bg-nfsu-navy"></span>

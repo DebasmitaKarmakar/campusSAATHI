@@ -1,12 +1,12 @@
-﻿# campusSAATHI
+# College Saathi
 
-campusSAATHI is a browser-based campus management and student engagement platform built for National Forensic Sciences University (NFSU), Gandhinagar. It brings together the services students and staff need most in a single digital workspace: notifications, grievance handling, academic resources, attendance, canteen operations, lost-and-found items, and career opportunities.
+College Saathi is a browser-based campus management and student engagement platform built for National Forensic Sciences University (NFSU), Gandhinagar. It brings together the services students and staff need most in a single digital workspace: notifications, grievance handling, academic resources, attendance, canteen operations, lost-and-found items, and career opportunities.
 
 Designed with a lightweight, low-infrastructure approach, the app runs entirely in the browser and stores data locally on the user's device. This makes it simple to deploy, easy to demo, and ideal for campus kiosks, lab terminals, or internal pilot deployments.
 
-## Why campusSAATHI?
+## Why College Saathi?
 
-Campuses often rely on fragmented tools: notice boards in one place, grievance systems elsewhere, canteen orders on WhatsApp or manual registers, and academic resources spread across class groups. campusSAATHI addresses this fragmentation by creating a unified digital campus hub built around accessibility, transparency, and student convenience.
+Campuses often rely on fragmented tools: notice boards in one place, grievance systems elsewhere, canteen orders on WhatsApp or manual registers, and academic resources spread across class groups. College Saathi addresses this fragmentation by creating a unified digital campus hub built around accessibility, transparency, and student convenience.
 
 The platform combines operational utilities with community features so students, faculty, staff, and administrators can all work within the same system without needing a traditional backend or cloud database.
 
@@ -75,10 +75,10 @@ The platform combines operational utilities with community features so students,
 
 ## Role-Based Access
 
-campusSAATHI provides role-specific dashboards so users see the campus tools relevant to their responsibilities.
+College Saathi provides role-specific dashboards so users see the campus tools relevant to their responsibilities.
 
 ### Student
-Students use campusSAATHI to stay informed and access day-to-day campus services. They can:
+Students use College Saathi to stay informed and access day-to-day campus services. They can:
 - Read campus notices and track their attendance
 - Place canteen orders, follow order status, and submit feedback
 - Report lost or found items and raise or upvote grievances
@@ -115,7 +115,7 @@ Administrators oversee platform access and campus-wide operations. They can:
 
 ## Architecture and Design
 
-campusSAATHI is intentionally lightweight:
+College Saathi is intentionally lightweight:
 
 - Frontend: React + TypeScript + Vite
 - Data storage: browser localStorage and sessionStorage
