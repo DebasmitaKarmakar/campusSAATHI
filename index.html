@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusWhispers | NFSU Students Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom": "https://esm.sh/react-dom@^19.2.4",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.4/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              nfsu: {
+                navy: '#002147',
+                navyLight: '#003366',
+                maroon: '#800000',
+                maroonLight: '#A00000',
+                gold: '#C5B358',
+                goldAccent: '#D4AF37',
+                cream: '#FEF9E7',
+                paper: '#F8FAFC'
+              }
+            },
+            backgroundImage: {
+              'institutional-pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')",
+              'gold-gradient': "linear-gradient(135deg, #C5B358 0%, #D4AF37 50%, #C5B358 100%)",
+            },
+            animation: {
+              'shimmer': 'shimmer 2s infinite linear',
+              'float': 'float 6s ease-in-out infinite',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'slideUp': 'slideUp 0.4s ease-out',
+              'fadeIn': 'fadeIn 0.5s ease-out',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' }
+              },
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8FAFC;
+        background-image: 
+          linear-gradient(135deg, rgba(0, 33, 71, 0.04) 0%, rgba(197, 179, 88, 0.04) 50%, rgba(128, 0, 0, 0.04) 100%),
+          radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+          url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+        background-attachment: fixed;
+      }
+      .status-pending { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
+      .status-served { background-color: #dcfce7; color: #166534; border-color: #bbf7d0; }
+      .status-expired { background-color: #fee2e2; color: #991b1b; border-color: #fecaca; }
+      .status-archived { background-color: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+      
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #C5B358; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #002147; }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-nfsu-paper text-slate-900 selection:bg-nfsu-gold selection:text-nfsu-navy">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

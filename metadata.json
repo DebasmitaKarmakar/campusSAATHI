@@ -1,0 +1,5 @@
+{
+  "name": "CampusWhispers NFSU",
+  "description": "A secure, whitelist-based login module for the CampusWhispers web application, featuring strict enrollment validation and student role assignment at NFSU.",
+  "requestFramePermissions": []
+}
