@@ -125,6 +125,10 @@ College Saathi is intentionally lightweight:
 
 This design keeps setup cost low and makes it easy to run in demo or pilot environments without server-side infrastructure.
 
+For a feature-by-feature specification of the shared backend database tables,
+fields, types, relationships, and file-storage requirements, see
+[DATABASE_REQUIREMENTS.md](./DATABASE_REQUIREMENTS.md).
+
 ## How It Works
 
 The application stores campus data in the user's browser instead of using a backend database. This keeps the project highly portable, but it also means:
