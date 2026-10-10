@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   simulateGoogleOAuth,
   lookupWhitelist,
-  isDeviceTrusted,
-  trustCurrentDevice,
   buildUserFromEntry,
   generateAndSendTOTP,
   validateTOTP,
@@ -136,12 +134,6 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       }
 
       setPendingEntry(entry);
-
-      if (isDeviceTrusted(entry.email, entry.role)) {
-        onLoginSuccess(buildUserFromEntry(entry));
-        return;
-      }
-
       await sendTOTP(entry);
     } catch (error) {
       setErrorMsg(error instanceof Error
@@ -174,7 +166,6 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       return;
     }
 
-    trustCurrentDevice(pendingEntry.email, pendingEntry.role);
     onLoginSuccess(buildUserFromEntry(pendingEntry));
   };
 
@@ -333,7 +324,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                 <div>
                   <h3 className="text-xl font-black text-nfsu-navy uppercase italic tracking-tighter">Verify Your Identity</h3>
                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">
-                    Device not recognised — verification required
+                    Enter the demo code to continue
                   </p>
                 </div>
 
