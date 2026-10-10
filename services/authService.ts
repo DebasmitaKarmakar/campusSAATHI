@@ -230,16 +230,15 @@ export interface TOTPSendResult {
 }
 
 /**
- * Prepares the fixed development OTP without depending on secure-context-only
- * browser APIs, so development over a LAN HTTP address works as well.
- * Production has no OTP provider/backend in this app and must fail closed.
+ * Generates a browser-only demo OTP challenge for the static, local-first app.
+ * The app has no backend or email service, so the code is intentionally local and
+ * displayed to the user in-browser to keep the experience functional in demo and
+ * deployable static builds.
  */
+const DEMO_TOTP_CODE = '098765';
+
 export const generateAndSendTOTP = async (email: string): Promise<TOTPSendResult> => {
-  // Discard any prior development challenge before refusing production login.
   clearTOTPSession();
-  if (!import.meta.env.DEV) {
-    return { success: false, error: 'OTP verification is unavailable in this build.' };
-  }
 
   const payload: TOTPPayload = {
     generatedAt: Date.now(),
@@ -247,20 +246,14 @@ export const generateAndSendTOTP = async (email: string): Promise<TOTPSendResult
   };
   sessionStorage.setItem(TOTP_PAYLOAD_KEY, JSON.stringify(payload));
 
-  return { success: true, developmentCode: '098765' };
+  return { success: true, developmentCode: DEMO_TOTP_CODE };
 };
 
 /**
- * Validates the development-only fixed code against the active, email-bound
- * challenge. This is a development convenience, not secure authentication.
+ * Validates the local demo code against the active, email-bound challenge.
  */
 export const validateTOTP = async (inputCode: string, email: string): Promise<boolean> => {
   try {
-    if (!import.meta.env.DEV) {
-      clearTOTPSession();
-      return false;
-    }
-
     const raw = sessionStorage.getItem(TOTP_PAYLOAD_KEY);
     if (!raw) return false;
 
@@ -268,8 +261,7 @@ export const validateTOTP = async (inputCode: string, email: string): Promise<bo
 
     if (payload.email !== email.toLowerCase()) return false;
     if (Date.now() - payload.generatedAt > TOTP_WINDOW_MS) return false;
-
-    if (inputCode.trim() !== '098765') return false;
+    if (inputCode.trim() !== DEMO_TOTP_CODE) return false;
 
     // Consume the payload — strictly one-time use
     sessionStorage.removeItem(TOTP_PAYLOAD_KEY);

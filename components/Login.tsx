@@ -241,7 +241,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
               <div className="text-left space-y-3 mt-2">
                 {[
                   ['Passwordless Login', 'Google Sign-In only'],
-                  ['OTP Verification', import.meta.env.DEV ? 'Development code; no email sent' : 'Verification required'],
+                  ['OTP Verification', 'Demo code shown in-browser'],
                 ].map(([label, desc]) => (
                   <div key={label} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-nfsu-gold mt-[5px] flex-shrink-0"></div>
