@@ -224,6 +224,12 @@ The app includes seeded demo accounts for testing the platform:
 
 When prompted for OTP during sign-in, the development flow can be used with the demo verification code, and the prompt appears in the browser console for easier testing.
 
+## Sample Data
+
+For demonstrations, the app seeds a small set of clearly marked `[DEMO]` records for notices, grievances, opportunities, academic resources, canteen orders and feedback, lost-and-found, MicroHelp, attendance, notifications, and review workflows. Sample student activity is associated with `stu@gmail.com`, while faculty and admin examples use `fac@gmail.com` and `ad@gmail.com`.
+
+Most demo records are seeded once per browser, and only when their corresponding table is empty, so existing records are preserved. The directory separately keeps two fictional contacts labeled as samples alongside user-created entries. The initial canteen menu and campus organization directory also include starter records.
+
 ## Authentication Flow
 
 The app uses a whitelist-based authentication model:

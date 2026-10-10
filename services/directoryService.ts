@@ -2,20 +2,10 @@ import { DirectoryContact, User } from '../types';
 import { dbService } from './dbService';
 
 const TABLE = 'directory_contacts';
-const SEED_MARKER = 'cw_directory_contacts_seeded_v1';
+const SEED_MARKER = 'cw_directory_contacts_seeded_v2';
 const SAMPLE_CONTACTS: DirectoryContact[] = [
   ['DIR-SAMPLE-01', 'Campus Help Desk (Sample)', 'Campus enquiries', 'Campus Services', 'helpdesk@example.invalid', '00000 00001 (sample)'],
   ['DIR-SAMPLE-02', 'Library Support (Sample)', 'Library assistance', 'Library', 'library@example.invalid', '00000 00002 (sample)'],
-  ['DIR-SAMPLE-03', 'Laboratory Services (Sample)', 'Lab assistant', 'Forensic Science Labs', 'labs@example.invalid', '00000 00003 (sample)'],
-  ['DIR-SAMPLE-04', 'IT Support (Sample)', 'Technical assistant', 'Information Technology', 'itsupport@example.invalid', '00000 00004 (sample)'],
-  ['DIR-SAMPLE-05', 'Student Affairs (Sample)', 'Student support', 'Student Affairs', 'students@example.invalid', '00000 00005 (sample)'],
-  ['DIR-SAMPLE-06', 'Academic Office (Sample)', 'Administrative support', 'Academic Affairs', 'academic@example.invalid', '00000 00006 (sample)'],
-  ['DIR-SAMPLE-07', 'Health Services (Sample)', 'Campus health enquiries', 'Health Services', 'health@example.invalid', '00000 00007 (sample)'],
-  ['DIR-SAMPLE-08', 'Facilities Desk (Sample)', 'Facilities support', 'Campus Facilities', 'facilities@example.invalid', '00000 00008 (sample)'],
-  ['DIR-SAMPLE-09', 'Research Support (Sample)', 'Research enquiries', 'Research Office', 'research@example.invalid', '00000 00009 (sample)'],
-  ['DIR-SAMPLE-10', 'Examination Office (Sample)', 'Examination enquiries', 'Examination Office', 'exams@example.invalid', '00000 00010 (sample)'],
-  ['DIR-SAMPLE-11', 'Hostel Office (Sample)', 'Hostel administration', 'Student Housing', 'hostel@example.invalid', '00000 00011 (sample)'],
-  ['DIR-SAMPLE-12', 'Accounts Desk (Sample)', 'Accounts enquiries', 'Finance Office', 'accounts@example.invalid', '00000 00012 (sample)'],
 ].map(([id, name, title, department, email, phone]) => ({
   id,
   name,
@@ -40,9 +30,15 @@ const canManageContact = (user: User, contact: DirectoryContact) =>
 const seedSampleContacts = () => {
   if (localStorage.getItem(SEED_MARKER) === 'true') return;
   const contacts = dbService.getTable<DirectoryContact>(TABLE);
-  const existingIds = new Set(contacts.map(contact => contact.id));
+  const legacySampleIds = new Set(
+    Array.from({ length: 12 }, (_, index) => `DIR-SAMPLE-${String(index + 1).padStart(2, '0')}`),
+  );
+  const withoutLegacySamples = contacts.filter(contact => !legacySampleIds.has(contact.id));
+  const existingIds = new Set(withoutLegacySamples.map(contact => contact.id));
   const missing = SAMPLE_CONTACTS.filter(contact => !existingIds.has(contact.id));
-  if (missing.length) dbService.saveTable(TABLE, [...contacts, ...missing]);
+  if (withoutLegacySamples.length !== contacts.length || missing.length) {
+    dbService.saveTable(TABLE, [...withoutLegacySamples, ...missing]);
+  }
   localStorage.setItem(SEED_MARKER, 'true');
 };
 

@@ -1,7 +1,9 @@
 import { MenuItem, Order, LFItem, OpportunityPost, QuestionPaper, HelpRequest, AdminLog, CampusOrg, AppNotification, NotificationCategory } from '../types';
+import { DEMO_TABLES } from './demoData';
 
 const DB_PREFIX = 'cw_db_';
 const DB_VERSION = '3.0';
+const DEMO_SEED_KEY = `${DB_PREFIX}demo_seeded_v1`;
 
 // Five static campus directory entries — directory is read-only; no add/edit via UI
 const INITIAL_CAMPUS_ORGS: CampusOrg[] = [
@@ -82,6 +84,15 @@ export const dbService = {
     const orgs = dbService.getTable<CampusOrg>('campus_orgs');
     if (orgs.length === 0) {
       dbService.saveTable('campus_orgs', INITIAL_CAMPUS_ORGS);
+    }
+
+    if (localStorage.getItem(DEMO_SEED_KEY) !== 'true') {
+      for (const [tableName, records] of Object.entries(DEMO_TABLES)) {
+        if (dbService.getTable<unknown>(tableName).length === 0) {
+          dbService.saveTable(tableName, records);
+        }
+      }
+      localStorage.setItem(DEMO_SEED_KEY, 'true');
     }
   },
 
